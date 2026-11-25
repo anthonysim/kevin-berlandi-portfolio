@@ -70,7 +70,7 @@ export function App() {
                 className="group inline-flex items-center gap-3 bg-[#F2EFE9] px-7 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-[#09090B] transition-all duration-300 hover:bg-[#D4A56A] cursor-pointer"
               >
                 <Play className="h-3.5 w-3.5 fill-current transition-transform group-hover:scale-110" />
-                <span>Play Director’s Reel</span>
+                <span>Play General Reel</span>
               </button>
 
               <a

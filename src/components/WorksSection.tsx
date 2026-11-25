@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Play, LayoutGrid, List, ArrowUpRight } from 'lucide-react';
-import { DIRECTOR_REEL, PROJECTS, type Discipline, type Project } from '../data/portfolio';
+import { PROJECTS, type Discipline, type Project } from '../data/portfolio';
 
 interface WorksSectionProps {
   onSelectProject: (project: Project) => void;
@@ -12,7 +12,6 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
   const [filter, setFilter] = useState<Discipline>('All');
   const [viewMode, setViewMode] = useState<'gallery' | 'index'>('gallery');
   const [hoveredProject, setHoveredProject] = useState<Project>(PROJECTS[0]);
-  const [playInlineReel, setPlayInlineReel] = useState(false);
 
   const filtered =
     filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.discipline === filter);
@@ -23,65 +22,6 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
   return (
     <section id="works" className="relative border-t border-[#F2EFE9]/10 py-24 md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
-        {/* GENERAL REEL FEATURED SHOWCASE */}
-        <div className="mb-20 md:mb-28">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-            <div>
-              <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#D4A56A] mb-2">
-                00 · General Reel
-              </p>
-              <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#F2EFE9]">
-                Director’s <span className="italic text-[#D4A56A]/95">General Reel</span>
-              </h2>
-            </div>
-            <button
-              onClick={() => onSelectProject(DIRECTOR_REEL)}
-              className="inline-flex items-center gap-2 font-mono-tech text-[11px] uppercase tracking-[0.22em] text-[#8E8B84] hover:text-[#D4A56A] transition-colors cursor-pointer"
-            >
-              <span>Open in Screening Room</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-
-          <div className="relative aspect-[16/9] w-full overflow-hidden border border-[#F2EFE9]/15 bg-black">
-            {playInlineReel ? (
-              <iframe
-                src={`${DIRECTOR_REEL.videoEmbedUrl}&autoplay=1&title=0&byline=0&portrait=0&color=d4a56a&dnt=1`}
-                title="Kevin Berlandi — General Reel"
-                className="h-full w-full border-0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <button
-                onClick={() => setPlayInlineReel(true)}
-                className="group relative h-full w-full block text-left cursor-pointer"
-              >
-                <img
-                  src={DIRECTOR_REEL.image}
-                  alt="Kevin Berlandi General Reel"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/85 via-[#09090B]/25 to-[#09090B]/30" />
-
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full border border-[#F2EFE9]/45 bg-[#09090B]/65 backdrop-blur-md text-[#F2EFE9] transition-all duration-300 group-hover:scale-110 group-hover:border-[#D4A56A] group-hover:text-[#D4A56A]">
-                    <Play className="h-7 w-7 fill-current ml-1" />
-                  </span>
-                  <span className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#F2EFE9]/90">
-                    Play General Reel
-                  </span>
-                </div>
-
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9]/70">
-                  <span>Film · Television · Commercials</span>
-                  <span className="text-[#D4A56A]">Vimeo HD</span>
-                </div>
-              </button>
-            )}
-          </div>
-        </div>
-
         {/* SELECTED WORKS HEADER + CONTROLS */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 md:mb-20">
           <div>
