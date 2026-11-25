@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Obsidian Cinema Background -->
+  <rect width="64" height="64" rx="10" fill="#09090B" />
+  <!-- Hairline Outer Frame -->
+  <rect x="2.5" y="2.5" width="59" height="59" rx="8" fill="none" stroke="#F2EFE9" stroke-opacity="0.14" stroke-width="1" />
+  <!-- Anamorphic Viewfinder Corner Ticks -->
+  <path d="M9 15 V9 H15 M49 9 H55 V15 M9 49 V55 H15 M49 55 H55 V49" fill="none" stroke="#D4A56A" stroke-width="1.75" stroke-linecap="square" />
+  <!-- Editorial Serif KB Monogram -->
+  <text
+    x="32"
+    y="41.5"
+    text-anchor="middle"
+    fill="#F2EFE9"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="27"
+    font-weight="400"
+    letter-spacing="1.5"
+  >KB</text>
+</svg>
