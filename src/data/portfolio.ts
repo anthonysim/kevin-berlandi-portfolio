@@ -54,8 +54,7 @@ export const PROJECTS: Project[] = [
     duration: 'Short Film',
     aspectRatio: '2.39:1',
     format: 'Cinema Anamorphic',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e99400ccc755adde55188/1772001600018/?format=1500w',
+    image: '/images/work/hana-sasakis-tail.jpg',
     recognition: 'Official Premiere — Festival de Cannes',
     logline:
       'A poetic, quietly surreal portrait of identity, inheritance, and unseen longing, adapted from the literary collection Three Scenarios.',
@@ -76,8 +75,7 @@ export const PROJECTS: Project[] = [
     duration: 'Episodic',
     aspectRatio: '2.00:1',
     format: 'Large Format · Water Housing',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f58400ccc755adde631e9/1772050496340/?format=1500w',
+    image: '/images/work/rescue-hi-surf-kickout.jpg',
     recognition: 'FOX Primetime',
     logline:
       'High-stakes open-water heroism along Oahu’s North Shore, uniting visceral oceanic scale with grounded human vulnerability.',
@@ -98,8 +96,7 @@ export const PROJECTS: Project[] = [
     duration: 'Episodic',
     aspectRatio: '1.85:1',
     format: 'Large Format Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e97961c057764f6cd177a/1772001174136/?format=1500w',
+    image: '/images/work/found-missing-while-perfect.jpg',
     recognition: 'NBC Primetime',
     logline:
       'An emotionally charged procedural drama exploring obsession, trauma, and the razor-thin line between savior and captor.',
@@ -120,8 +117,7 @@ export const PROJECTS: Project[] = [
     duration: 'Episodic',
     aspectRatio: '1.85:1',
     format: 'Cinema Spherical',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f586d1c057764f6cdf7bd/1772050541139/?format=1500w',
+    image: '/images/work/blacklist-the-postman.jpg',
     recognition: 'NBC Primetime',
     logline:
       'Taut espionage and moral ambiguity in a high-stakes chapter of NBC’s signature crime thriller.',
@@ -142,8 +138,7 @@ export const PROJECTS: Project[] = [
     duration: 'Short Film',
     aspectRatio: '2.39:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e999d1c057764f6cd190a/1772001693088/?format=1500w',
+    image: '/images/work/dirtballs.jpg',
     recognition: 'Narrative Short',
     logline:
       'A gritty, character-forward narrative short driven by raw texture, sharp comedic timing, and lived-in authenticity.',
@@ -163,8 +158,7 @@ export const PROJECTS: Project[] = [
     duration: 'Episodic',
     aspectRatio: '1.85:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e97e00ccc755adde5508a/1772001248088/?format=1500w',
+    image: '/images/work/bull-you-killed-your-sister.jpg',
     recognition: 'CBS Primetime',
     logline:
       'High-wire courtroom drama where subtle micro-expressions and shifting allegiances decide the verdict.',
@@ -186,8 +180,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '2.39:1',
     format: 'Cinema Tracking',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7f9e44195311c2c3c2c8/1772060574117/?format=1500w',
+    image: '/images/work/audi-r8-gt.jpg',
     logline:
       'Sculptural velocity and precision engineering—treating the Audi R8 GT with the brooding visual drama of a feature film.',
     directorNote:
@@ -206,8 +199,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '2.39:1',
     format: 'Anamorphic Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7f77b058784bd93fd441/1772060535612/?format=1500w',
+    image: '/images/work/audi-sleepy-hollow.jpg',
     logline:
       'Atmospheric nocturnal storytelling blending folklore suspense with razor-sharp modern automotive cinematography.',
     directorNote:
@@ -226,8 +218,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '2.39:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7fc11c057764f6ce342f/1772060609840/?format=1500w',
+    image: '/images/work/porsche-cayenne.jpg',
     logline:
       'Refined power and tactile motion crafted with disciplined European minimalism and kinetic camera work.',
     directorNote:
@@ -246,8 +237,7 @@ export const PROJECTS: Project[] = [
     duration: '01:00',
     aspectRatio: '2.39:1',
     format: 'Large Format Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f800f44195311c2c3c36a/1772060687610/?format=1500w',
+    image: '/images/work/gmc-anthem.jpg',
     logline:
       'A bold sixty-second anthem uniting monumental American landscapes with human craft and industrial precision.',
     directorNote:
@@ -266,8 +256,7 @@ export const PROJECTS: Project[] = [
     duration: '01:00',
     aspectRatio: '1.85:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5c7f44195311c2c38e70/1772051583714/?format=1500w',
+    image: '/images/work/wait-until-8th-the-gift.jpg',
     recognition: 'National PSA Campaign',
     logline:
       'An intimate, emotionally resonant sixty-second film examining childhood presence in an always-connected world.',
@@ -287,8 +276,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '2.39:1',
     format: 'Precision Stunt & Tracking',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7e441c057764f6ce31e5/1772060228935/?format=1500w',
+    image: '/images/work/nissan-altima-chase.jpg',
     logline:
       'High-velocity urban pursuit crafted with blockbuster action choreography and split-second editorial impact.',
     directorNote:
@@ -307,8 +295,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '2.39:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5c60b058784bd93f9f52/1772051552948/?format=1500w',
+    image: '/images/work/buick-avenir-anthem.jpg',
     logline:
       'Elevated modern luxury framed through architectural light, quiet elegance, and fluid camera movement.',
     directorNote:
@@ -327,8 +314,7 @@ export const PROJECTS: Project[] = [
     duration: '00:30',
     aspectRatio: '2.39:1',
     format: 'Studio & Location Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5cc144195311c2c38ef6/1772051649797/?format=1500w',
+    image: '/images/work/buick-lacrosse-exterior.jpg',
     logline:
       'A crisp thirty-second visual study celebrating sculptural form, contour, and reflected light.',
     directorNote:
@@ -347,8 +333,7 @@ export const PROJECTS: Project[] = [
     duration: 'Brand Film',
     aspectRatio: '1.85:1',
     format: 'Natural Light Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5ce40ccc755adde63924/1772051684240/?format=1500w',
+    image: '/images/work/toyota-prius-roadtrip.jpg',
     logline:
       'Sun-drenched road film following acclaimed singer-songwriter Ximena Sariñana through open landscapes and spontaneous discovery.',
     directorNote:
@@ -367,8 +352,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '1.85:1',
     format: 'Cinema Digital',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7e86b058784bd93fd2fc/1772060294044/?format=1500w',
+    image: '/images/work/jeep-wrangler-aluminum-doors.jpg',
     logline:
       'Playful, tactile brand storytelling highlighting rugged capability with sharp comedic timing and kinetic visuals.',
     directorNote:
@@ -387,8 +371,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '1.85:1',
     format: 'Off-Road Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5ca444195311c2c38eca/1772051620035/?format=1500w',
+    image: '/images/work/jeep-wrangler-sway-bar.jpg',
     logline:
       'Kinetic off-road terrain meets crisp visual storytelling, spotlighting engineering poise under extreme angles.',
     directorNote:
@@ -407,8 +390,7 @@ export const PROJECTS: Project[] = [
     duration: 'Spot',
     aspectRatio: '1.85:1',
     format: 'Elemental Location Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e98810ccc755adde550ff/1772001409928/?format=1500w',
+    image: '/images/work/jeep-wrangler-all-weather.jpg',
     logline:
       'Elemental adventure captured with vivid atmospheric texture and grounded human energy.',
     directorNote:
@@ -427,8 +409,7 @@ export const PROJECTS: Project[] = [
     duration: 'Brand Film',
     aspectRatio: '2.39:1',
     format: 'Anamorphic Night Cinema',
-    image:
-      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e98be0ccc755adde5512f/1772001470948/?format=1500w',
+    image: '/images/work/nixon-x-krewella.jpg',
     logline:
       'Electric nightlife energy, kinetic neon-lit portraiture, and rhythmic sound-driven montage for Nixon × Krewella.',
     directorNote:
