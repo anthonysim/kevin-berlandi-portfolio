@@ -88,8 +88,9 @@ export function CraftSection() {
               {(Object.keys(ASPECT_NOTES) as AspectStudy[]).map((ratio) => (
                 <button
                   key={ratio}
+                  type="button"
                   onClick={() => setActiveRatio(ratio)}
-                  className={`px-4 py-2 font-mono-tech text-xs tracking-[0.18em] uppercase border transition-all duration-300 cursor-pointer ${
+                  className={`px-4 py-2 font-mono-tech text-xs tracking-[0.18em] uppercase border transition-colors duration-300 cursor-pointer ${
                     activeRatio === ratio
                       ? 'border-[#D4A56A] bg-[#D4A56A]/15 text-[#D4A56A]'
                       : 'border-[#F2EFE9]/15 text-[#8E8B84] hover:border-[#F2EFE9]/40 hover:text-[#F2EFE9]'
@@ -100,11 +101,25 @@ export function CraftSection() {
               ))}
             </div>
 
-            <div className="pt-2 space-y-3">
-              <h3 className="font-serif-display text-3xl font-light text-[#F2EFE9]">
-                {current.subtitle}
-              </h3>
-              <p className="text-sm leading-relaxed text-[#F2EFE9]/75">{current.note}</p>
+            <div className="pt-2 grid">
+              {(Object.keys(ASPECT_NOTES) as AspectStudy[]).map((ratio) => {
+                const item = ASPECT_NOTES[ratio];
+                const isActive = ratio === activeRatio;
+                return (
+                  <div
+                    key={ratio}
+                    aria-hidden={!isActive}
+                    className={`col-start-1 row-start-1 space-y-3 transition-opacity duration-300 ${
+                      isActive ? 'opacity-100' : 'opacity-0 invisible pointer-events-none select-none'
+                    }`}
+                  >
+                    <h3 className="font-serif-display text-3xl font-light text-[#F2EFE9]">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#F2EFE9]/75">{item.note}</p>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="pt-4 border-t border-[#F2EFE9]/10 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8E8B84]">
