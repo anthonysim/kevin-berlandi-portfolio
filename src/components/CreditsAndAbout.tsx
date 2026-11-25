@@ -83,20 +83,42 @@ export function CreditsAndAbout() {
       <section id="about" className="border-t border-[#F2EFE9]/10 py-24 md:py-36">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5">
-              <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#D4A56A] mb-4">
-                04 · The Director
-              </p>
-              <h2 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-light leading-[1.08] text-[#F2EFE9] mb-8">
-                Born between <span className="italic">independent cinema</span> and studio spectacle.
-              </h2>
+            {/* Director Portrait Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <div>
+                <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#D4A56A] mb-4">
+                  04 · The Director
+                </p>
+                <h2 className="font-serif-display text-4xl sm:text-5xl font-light leading-[1.08] text-[#F2EFE9]">
+                  Born between <span className="italic">independent cinema</span> and studio
+                  spectacle.
+                </h2>
+              </div>
+
+              {/* Archival Director Portrait */}
+              <figure className="group relative border border-[#F2EFE9]/15 bg-[#0E0E12] p-3">
+                <div className="relative aspect-square w-full overflow-hidden bg-[#F2EFE9]">
+                  <img
+                    src="/images/kevin-berlandi.webp"
+                    alt="Kevin Berlandi — Film, Television & Commercial Director"
+                    className="h-full w-full object-cover object-top grayscale contrast-[1.06] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                  {/* Subtle archival darkroom vignette */}
+                  <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_48px_rgba(9,9,11,0.18)]" />
+                </div>
+                <figcaption className="mt-3 flex items-center justify-between px-1 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#8E8B84]">
+                  <span>Kevin Berlandi</span>
+                  <span className="text-[#D4A56A]/85">Director · Los Angeles</span>
+                </figcaption>
+              </figure>
+
               <blockquote className="border-l border-[#D4A56A] pl-5 font-serif-display italic text-xl md:text-2xl text-[#F2EFE9]/85 leading-relaxed">
                 “Scale only matters when it amplifies the human heartbeat at the center of the
                 frame.”
               </blockquote>
             </div>
 
-            <div className="lg:col-span-7 space-y-6 text-base leading-relaxed text-[#F2EFE9]/75">
+            <div className="lg:col-span-7 lg:pt-12 space-y-6 text-base leading-relaxed text-[#F2EFE9]/75">
               <p>
                 <strong className="font-medium text-[#F2EFE9]">Kevin Berlandi</strong> is a Los
                 Angeles-based film, television, and commercial director whose visual sensibility was
