@@ -117,7 +117,7 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                     <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:opacity-100">
                       <span className="flex items-center gap-2 border border-[#F2EFE9]/40 bg-[#09090B]/70 backdrop-blur-md px-3.5 py-2 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9] lg:transform lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">
                         <Play className="h-3 w-3 fill-current text-[#D4A56A]" />
-                        <span>Watch Film</span>
+                        <span>Watch</span>
                       </span>
                     </div>
                   </div>
