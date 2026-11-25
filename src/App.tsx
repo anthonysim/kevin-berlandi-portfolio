@@ -92,7 +92,7 @@ export function App() {
               <span className="text-[#F2EFE9]/25">·</span>
               <span>Audi · Porsche · Toyota</span>
             </div>
-            <div className="text-[#F2EFE9]/60">Rep: Independent Artist Group (IAG)</div>
+            <div className="text-[#F2EFE9]/60">Rep: IAG · Durable Goods · Rain Management</div>
           </div>
         </div>
       </section>

@@ -24,36 +24,57 @@ export function ContactFooter() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-2">
-              <div className="border-t border-[#F2EFE9]/15 pt-5">
-                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#8E8B84] mb-2">
-                  Representation
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7 pt-2">
+              <div className="border-t border-[#F2EFE9]/15 pt-4">
+                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#D4A56A] mb-1.5">
+                  Agency · Film &amp; TV
                 </div>
-                <div className="font-serif-display text-2xl text-[#F2EFE9]">
-                  Independent Artist Group (IAG)
-                </div>
+                <div className="font-serif-display text-2xl text-[#F2EFE9]">IAG</div>
                 <div className="text-sm text-[#F2EFE9]/75 mt-1">Jack Leighton</div>
-                <div className="font-mono-tech text-[11px] text-[#8E8B84] mt-2">
-                  Film · Television · Commercials
-                </div>
               </div>
 
-              <div className="border-t border-[#F2EFE9]/15 pt-5">
-                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#8E8B84] mb-2">
-                  Production Studio
+              <div className="border-t border-[#F2EFE9]/15 pt-4">
+                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#D4A56A] mb-1.5">
+                  Commercial
+                </div>
+                <div className="font-serif-display text-2xl text-[#F2EFE9]">Durable Goods</div>
+                <div className="text-sm text-[#F2EFE9]/75 mt-1">Roxanne Artesona</div>
+              </div>
+
+              <div className="border-t border-[#F2EFE9]/15 pt-4">
+                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#D4A56A] mb-1.5">
+                  Management
+                </div>
+                <div className="font-serif-display text-2xl text-[#F2EFE9]">Rain Management</div>
+                <div className="text-sm text-[#F2EFE9]/75 mt-1">Rob Wolken &amp; Dalip Sethi</div>
+              </div>
+
+              <div className="border-t border-[#F2EFE9]/15 pt-4">
+                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#D4A56A] mb-1.5">
+                  Legal
                 </div>
                 <div className="font-serif-display text-2xl text-[#F2EFE9]">
-                  Berlandi Productions
+                  Josh Reitzas &amp; Brian Berlandi
                 </div>
-                <div className="text-sm text-[#F2EFE9]/75 mt-1">Los Angeles, California</div>
-                <a
-                  href="mailto:info@berlandi.co"
-                  className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] text-[#D4A56A] mt-2 hover:underline"
-                >
-                  <span>info@berlandi.co</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
               </div>
+            </div>
+
+            <div className="border-t border-[#F2EFE9]/15 pt-5 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#8E8B84]">
+                  Production Studio
+                </div>
+                <div className="text-sm text-[#F2EFE9]/85 mt-1">
+                  Berlandi Productions · Los Angeles, California
+                </div>
+              </div>
+              <a
+                href="mailto:info@berlandi.co"
+                className="inline-flex items-center gap-1.5 font-mono-tech text-[11px] uppercase tracking-[0.18em] text-[#D4A56A] hover:underline"
+              >
+                <span>info@berlandi.co</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
             </div>
           </div>
 
