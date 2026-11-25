@@ -111,7 +111,7 @@ export function ContactFooter() {
                         type="text"
                         required
                         placeholder="Your name"
-                        className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none"
+                        className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-base sm:text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -122,7 +122,7 @@ export function ContactFooter() {
                         type="email"
                         required
                         placeholder="name@studio.com"
-                        className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none"
+                        className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-base sm:text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -131,7 +131,7 @@ export function ContactFooter() {
                     <label className="block font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8E8B84] mb-2">
                       Discipline
                     </label>
-                    <select className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-[#F2EFE9] focus:border-[#D4A56A] focus:outline-none">
+                    <select className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-base sm:text-sm text-[#F2EFE9] focus:border-[#D4A56A] focus:outline-none">
                       <option>Episodic Television</option>
                       <option>Feature / Narrative Film</option>
                       <option>Commercial / Brand Film</option>
@@ -147,7 +147,7 @@ export function ContactFooter() {
                       rows={3}
                       required
                       placeholder="Script, campaign brief, dates, or screener request..."
-                      className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none resize-none"
+                      className="w-full border border-[#F2EFE9]/15 bg-[#09090B] px-3.5 py-2.5 text-base sm:text-sm text-[#F2EFE9] placeholder:text-[#8E8B84]/50 focus:border-[#D4A56A] focus:outline-none resize-none"
                     />
                   </div>
 

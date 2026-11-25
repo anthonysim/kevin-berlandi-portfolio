@@ -64,7 +64,7 @@ export function CreditsAndAbout() {
               <h3 className="font-mono-tech text-[11px] uppercase tracking-[0.24em] text-[#8E8B84] pb-4 border-b border-[#F2EFE9]/15 mb-6">
                 Commercial Partners
               </h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-3">
                 {COMMERCIAL_BRANDS.map((brand) => (
                   <div
                     key={brand}
@@ -96,7 +96,7 @@ export function CreditsAndAbout() {
               </div>
 
               {/* Archival Director Portrait */}
-              <figure className="group relative border border-[#F2EFE9]/15 bg-[#0E0E12] p-3">
+              <figure className="group relative max-w-md lg:max-w-none border border-[#F2EFE9]/15 bg-[#0E0E12] p-3">
                 <div className="relative aspect-square w-full overflow-hidden bg-[#F2EFE9]">
                   <img
                     src="/images/kevin-berlandi.webp"

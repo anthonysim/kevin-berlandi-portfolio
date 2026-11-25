@@ -33,14 +33,14 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between lg:justify-end gap-4 sm:gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between lg:justify-end gap-3.5 sm:gap-5">
             {/* Discipline Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 border border-[#F2EFE9]/12 bg-[#0E0E12] p-1">
+            <div className="flex items-center gap-1 overflow-x-auto border border-[#F2EFE9]/12 bg-[#0E0E12] p-1 max-w-full">
               {DISCIPLINES.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setFilter(tab)}
-                  className={`px-3.5 py-1.5 font-mono-tech text-[11px] uppercase tracking-[0.18em] transition-all duration-300 cursor-pointer ${
+                  className={`shrink-0 whitespace-nowrap px-3.5 py-2 font-mono-tech text-[11px] uppercase tracking-[0.16em] transition-all duration-300 cursor-pointer ${
                     filter === tab
                       ? 'bg-[#F2EFE9] text-[#09090B]'
                       : 'text-[#8E8B84] hover:text-[#F2EFE9]'
@@ -53,11 +53,11 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
             </div>
 
             {/* Gallery vs Index Toggle */}
-            <div className="flex items-center border border-[#F2EFE9]/12 bg-[#0E0E12] p-1">
+            <div className="flex w-fit items-center border border-[#F2EFE9]/12 bg-[#0E0E12] p-1">
               <button
                 onClick={() => setViewMode('gallery')}
                 aria-label="Gallery View"
-                className={`p-1.5 transition-colors cursor-pointer ${
+                className={`p-2 transition-colors cursor-pointer ${
                   viewMode === 'gallery'
                     ? 'bg-[#D4A56A]/20 text-[#D4A56A]'
                     : 'text-[#8E8B84] hover:text-[#F2EFE9]'
@@ -68,7 +68,7 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
               <button
                 onClick={() => setViewMode('index')}
                 aria-label="Archive Index View"
-                className={`p-1.5 transition-colors cursor-pointer ${
+                className={`p-2 transition-colors cursor-pointer ${
                   viewMode === 'index'
                     ? 'bg-[#D4A56A]/20 text-[#D4A56A]'
                     : 'text-[#8E8B84] hover:text-[#F2EFE9]'
@@ -113,9 +113,9 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                       </span>
                     </div>
 
-                    {/* Center Play Reveal */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
-                      <span className="flex items-center gap-2 border border-[#F2EFE9]/40 bg-[#09090B]/75 backdrop-blur-md px-4 py-2 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9] transform translate-y-2 transition-transform duration-300 group-hover:translate-y-0">
+                    {/* Center Play Reveal (always subtly visible on touch/mobile, hover reveal on desktop) */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 transition-all duration-300 lg:group-hover:opacity-100">
+                      <span className="flex items-center gap-2 border border-[#F2EFE9]/40 bg-[#09090B]/70 backdrop-blur-md px-3.5 py-2 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9] lg:transform lg:translate-y-2 transition-transform duration-300 lg:group-hover:translate-y-0">
                         <Play className="h-3 w-3 fill-current text-[#D4A56A]" />
                         <span>Watch Film</span>
                       </span>
@@ -157,15 +157,23 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                   onMouseEnter={() => setHoveredProject(project)}
                   onFocus={() => setHoveredProject(project)}
                   onClick={() => onSelectProject(project)}
-                  className="group w-full flex items-center justify-between gap-4 border-b border-[#F2EFE9]/10 py-4 text-left transition-colors hover:bg-[#F2EFE9]/[0.02] px-3 cursor-pointer"
+                  className="group w-full flex items-center justify-between gap-4 border-b border-[#F2EFE9]/10 py-4 text-left transition-colors hover:bg-[#F2EFE9]/[0.02] px-2 sm:px-3 cursor-pointer"
                 >
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-mono-tech text-xs text-[#D4A56A]">{project.index}</span>
-                    <div>
-                      <div className="font-serif-display text-xl sm:text-2xl font-light text-[#F2EFE9] group-hover:text-[#D4A56A] transition-colors">
+                  <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="lg:hidden h-11 w-16 shrink-0 object-cover border border-[#F2EFE9]/15 bg-[#111114]"
+                    />
+                    <span className="hidden sm:inline font-mono-tech text-xs text-[#D4A56A] shrink-0">
+                      {project.index}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="font-serif-display text-xl sm:text-2xl font-light text-[#F2EFE9] group-hover:text-[#D4A56A] transition-colors truncate">
                         {project.title}
                       </div>
-                      <div className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8E8B84] mt-0.5">
+                      <div className="font-mono-tech text-[10px] uppercase tracking-[0.18em] text-[#8E8B84] mt-0.5 truncate">
                         {project.clientOrNetwork} · {project.discipline}
                       </div>
                     </div>
@@ -180,8 +188,8 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
               ))}
             </div>
 
-            {/* Sticky Preview Frame */}
-            <div className="lg:col-span-5 lg:sticky lg:top-28">
+            {/* Sticky Preview Frame (Desktop) */}
+            <div className="hidden lg:block lg:col-span-5 lg:sticky lg:top-28">
               <div
                 onClick={() => onSelectProject(hoveredProject)}
                 className="border border-[#F2EFE9]/12 bg-[#0E0E12] overflow-hidden cursor-pointer group"

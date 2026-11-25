@@ -114,7 +114,7 @@ export function CraftSection() {
         </div>
 
         {/* Three Artistic Pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#F2EFE9]/10 border border-[#F2EFE9]/10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#F2EFE9]/10 border border-[#F2EFE9]/10">
           {CRAFT_PILLARS.map((pillar) => (
             <div
               key={pillar.number}

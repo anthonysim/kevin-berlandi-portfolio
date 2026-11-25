@@ -66,22 +66,23 @@ export function Navbar() {
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle Menu"
-          className="lg:hidden p-2 text-[#F2EFE9]/80 hover:text-[#F2EFE9] cursor-pointer"
+          aria-expanded={mobileOpen}
+          className="lg:hidden flex h-11 w-11 items-center justify-center -mr-2 text-[#F2EFE9]/85 hover:text-[#F2EFE9] cursor-pointer"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile / Tablet Drawer */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-[#F2EFE9]/10 bg-[#09090B]/98 backdrop-blur-xl px-6 py-8">
-          <div className="flex flex-col gap-6">
+        <div className="lg:hidden border-t border-[#F2EFE9]/10 bg-[#09090B]/98 backdrop-blur-xl px-6 md:px-12 py-8">
+          <div className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-serif-display text-2xl tracking-wide text-[#F2EFE9]/90 hover:text-[#D4A56A]"
+                className="py-1 font-serif-display text-2xl sm:text-3xl tracking-wide text-[#F2EFE9]/90 hover:text-[#D4A56A]"
               >
                 {link.label}
               </a>

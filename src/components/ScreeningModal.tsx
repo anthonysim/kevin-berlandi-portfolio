@@ -32,23 +32,23 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#050507]/95 backdrop-blur-xl p-4 md:p-8 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-[#050507]/95 backdrop-blur-xl p-0 sm:p-4 md:p-8 overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="relative my-auto w-full max-w-6xl border border-[#F2EFE9]/15 bg-[#0C0C0F] shadow-2xl overflow-hidden"
+        className="relative sm:my-auto w-full max-w-6xl min-h-full sm:min-h-0 border-0 sm:border border-[#F2EFE9]/15 bg-[#0C0C0F] shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Screening Bar */}
-        <div className="flex items-center justify-between border-b border-[#F2EFE9]/10 px-5 py-3.5 md:px-7">
-          <div className="flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full bg-[#D4A56A] animate-pulse" />
-            <span className="font-mono-tech text-[11px] uppercase tracking-[0.22em] text-[#8E8B84]">
+        <div className="sticky top-0 z-20 flex items-center justify-between border-b border-[#F2EFE9]/10 bg-[#0C0C0F]/95 backdrop-blur-md px-4 py-3 sm:px-5 md:px-7">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#D4A56A] animate-pulse" />
+            <span className="font-mono-tech text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#8E8B84] truncate">
               Screening Room · Reel {project.index} · {project.aspectRatio}
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 shrink-0">
             <a
               href={project.videoEmbedUrl}
               target="_blank"
@@ -62,7 +62,7 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
             <button
               onClick={onClose}
               aria-label="Close Screening Room"
-              className="p-1.5 text-[#8E8B84] transition-colors hover:text-[#F2EFE9] cursor-pointer"
+              className="flex h-10 w-10 items-center justify-center -mr-2 text-[#8E8B84] transition-colors hover:text-[#F2EFE9] cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>

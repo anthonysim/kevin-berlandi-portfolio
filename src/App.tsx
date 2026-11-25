@@ -19,7 +19,7 @@ export function App() {
       <Navbar />
 
       {/* HERO — THE SCREENING ROOM */}
-      <section className="relative flex min-h-screen w-full items-end overflow-hidden pt-28 pb-16 md:pb-24">
+      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden pt-28 pb-12 sm:pb-16 md:pb-24">
         {/* Background Widescreen Still with Slow Ken Burns Drift */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -64,10 +64,10 @@ export function App() {
               commercials.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3.5 sm:gap-4 pt-3">
               <button
                 onClick={() => setActiveProject(DIRECTOR_REEL)}
-                className="group inline-flex items-center gap-3 bg-[#F2EFE9] px-7 py-3.5 text-xs font-medium uppercase tracking-[0.22em] text-[#09090B] transition-all duration-300 hover:bg-[#D4A56A] cursor-pointer"
+                className="group inline-flex items-center justify-center gap-3 bg-[#F2EFE9] px-7 py-3.5 min-h-[48px] text-xs font-medium uppercase tracking-[0.22em] text-[#09090B] transition-all duration-300 hover:bg-[#D4A56A] cursor-pointer"
               >
                 <Play className="h-3.5 w-3.5 fill-current transition-transform group-hover:scale-110" />
                 <span>Play General Reel</span>
@@ -75,7 +75,7 @@ export function App() {
 
               <a
                 href="#works"
-                className="inline-flex items-center gap-2.5 border border-[#F2EFE9]/25 bg-[#09090B]/40 backdrop-blur-sm px-6 py-3.5 text-xs uppercase tracking-[0.22em] text-[#F2EFE9] transition-all duration-300 hover:border-[#D4A56A] hover:text-[#D4A56A]"
+                className="inline-flex items-center justify-center gap-2.5 border border-[#F2EFE9]/25 bg-[#09090B]/40 backdrop-blur-sm px-6 py-3.5 min-h-[48px] text-xs uppercase tracking-[0.22em] text-[#F2EFE9] transition-all duration-300 hover:border-[#D4A56A] hover:text-[#D4A56A]"
               >
                 <span>Explore Selected Works</span>
                 <ArrowDown className="h-3.5 w-3.5" />
