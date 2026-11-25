@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Play, LayoutGrid, List, ArrowUpRight } from 'lucide-react';
-import { PROJECTS, type Discipline, type Project } from '../data/portfolio';
+import { DIRECTOR_REEL, PROJECTS, type Discipline, type Project } from '../data/portfolio';
 
 interface WorksSectionProps {
   onSelectProject: (project: Project) => void;
@@ -12,14 +12,77 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
   const [filter, setFilter] = useState<Discipline>('All');
   const [viewMode, setViewMode] = useState<'gallery' | 'index'>('gallery');
   const [hoveredProject, setHoveredProject] = useState<Project>(PROJECTS[0]);
+  const [playInlineReel, setPlayInlineReel] = useState(false);
 
   const filtered =
     filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.discipline === filter);
 
+  const getCount = (tab: Discipline) =>
+    tab === 'All' ? PROJECTS.length : PROJECTS.filter((p) => p.discipline === tab).length;
+
   return (
     <section id="works" className="relative border-t border-[#F2EFE9]/10 py-24 md:py-36">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
-        {/* Header + Controls */}
+        {/* GENERAL REEL FEATURED SHOWCASE */}
+        <div className="mb-20 md:mb-28">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+            <div>
+              <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#D4A56A] mb-2">
+                00 · General Reel
+              </p>
+              <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-light text-[#F2EFE9]">
+                Director’s <span className="italic text-[#D4A56A]/95">General Reel</span>
+              </h2>
+            </div>
+            <button
+              onClick={() => onSelectProject(DIRECTOR_REEL)}
+              className="inline-flex items-center gap-2 font-mono-tech text-[11px] uppercase tracking-[0.22em] text-[#8E8B84] hover:text-[#D4A56A] transition-colors cursor-pointer"
+            >
+              <span>Open in Screening Room</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
+
+          <div className="relative aspect-[16/9] w-full overflow-hidden border border-[#F2EFE9]/15 bg-black">
+            {playInlineReel ? (
+              <iframe
+                src={`${DIRECTOR_REEL.videoEmbedUrl}&autoplay=1&title=0&byline=0&portrait=0&color=d4a56a&dnt=1`}
+                title="Kevin Berlandi — General Reel"
+                className="h-full w-full border-0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <button
+                onClick={() => setPlayInlineReel(true)}
+                className="group relative h-full w-full block text-left cursor-pointer"
+              >
+                <img
+                  src={DIRECTOR_REEL.image}
+                  alt="Kevin Berlandi General Reel"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/85 via-[#09090B]/25 to-[#09090B]/30" />
+
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full border border-[#F2EFE9]/45 bg-[#09090B]/65 backdrop-blur-md text-[#F2EFE9] transition-all duration-300 group-hover:scale-110 group-hover:border-[#D4A56A] group-hover:text-[#D4A56A]">
+                    <Play className="h-7 w-7 fill-current ml-1" />
+                  </span>
+                  <span className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#F2EFE9]/90">
+                    Play General Reel
+                  </span>
+                </div>
+
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9]/70">
+                  <span>Film · Television · Commercials</span>
+                  <span className="text-[#D4A56A]">Vimeo HD</span>
+                </div>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* SELECTED WORKS HEADER + CONTROLS */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 md:mb-20">
           <div>
             <p className="font-mono-tech text-[11px] uppercase tracking-[0.28em] text-[#D4A56A] mb-4">
@@ -43,7 +106,8 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                       : 'text-[#8E8B84] hover:text-[#F2EFE9]'
                   }`}
                 >
-                  {tab}
+                  {tab}{' '}
+                  <span className="opacity-60">({getCount(tab)})</span>
                 </button>
               ))}
             </div>
@@ -78,66 +142,51 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
 
         {/* GALLERY VIEW */}
         {viewMode === 'gallery' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12">
             {filtered.map((project, idx) => {
-              const isWide = filter === 'All' && idx === 0;
+              const isHeroCard = filter === 'All' && idx === 0;
               return (
                 <article
                   key={project.id}
                   onClick={() => onSelectProject(project)}
                   className={`group cursor-pointer flex flex-col ${
-                    isWide ? 'md:col-span-2' : ''
+                    isHeroCard ? 'md:col-span-2 lg:col-span-2' : ''
                   }`}
                 >
                   {/* Widescreen Frame */}
-                  <div
-                    className={`relative w-full overflow-hidden border border-[#F2EFE9]/12 bg-[#111114] ${
-                      isWide ? 'aspect-[21/9]' : 'aspect-[16/9]'
-                    }`}
-                  >
+                  <div className="relative aspect-[16/9] w-full overflow-hidden border border-[#F2EFE9]/12 bg-[#111114]">
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/85 via-[#09090B]/15 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-65" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/85 via-[#09090B]/15 to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-60" />
 
                     {/* Top Technical Metadata */}
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.22em]">
-                      <span className="bg-[#09090B]/65 backdrop-blur-md px-2.5 py-1 text-[#F2EFE9]/85 border border-[#F2EFE9]/12">
+                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.2em]">
+                      <span className="bg-[#09090B]/70 backdrop-blur-md px-2.5 py-1 text-[#F2EFE9]/90 border border-[#F2EFE9]/12">
                         {project.index} · {project.discipline}
                       </span>
-                      <span className="bg-[#09090B]/65 backdrop-blur-md px-2.5 py-1 text-[#D4A56A] border border-[#D4A56A]/25">
+                      <span className="bg-[#09090B]/70 backdrop-blur-md px-2 py-1 text-[#D4A56A] border border-[#D4A56A]/25">
                         {project.aspectRatio}
                       </span>
                     </div>
 
                     {/* Center Play Reveal */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-400 group-hover:opacity-100">
-                      <span className="flex items-center gap-2.5 border border-[#F2EFE9]/40 bg-[#09090B]/75 backdrop-blur-md px-5 py-2.5 font-mono-tech text-[11px] uppercase tracking-[0.22em] text-[#F2EFE9] transform translate-y-2 transition-transform duration-400 group-hover:translate-y-0">
-                        <Play className="h-3.5 w-3.5 fill-current text-[#D4A56A]" />
-                        <span>Enter Screening Room</span>
-                      </span>
-                    </div>
-
-                    {/* Bottom Director's Note Peek */}
-                    <div className="absolute bottom-4 left-4 right-4 hidden sm:flex items-end justify-between gap-6">
-                      <p className="max-w-xl font-serif-display italic text-base md:text-lg text-[#F2EFE9]/85 line-clamp-1 opacity-0 transform translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                        “{project.directorNote}”
-                      </p>
-                      <span className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#F2EFE9]/60 shrink-0">
-                        {project.duration}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                      <span className="flex items-center gap-2 border border-[#F2EFE9]/40 bg-[#09090B]/75 backdrop-blur-md px-4 py-2 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#F2EFE9] transform translate-y-2 transition-transform duration-300 group-hover:translate-y-0">
+                        <Play className="h-3 w-3 fill-current text-[#D4A56A]" />
+                        <span>Watch Film</span>
                       </span>
                     </div>
                   </div>
 
                   {/* Caption Bar */}
-                  <div className="mt-5 flex items-start justify-between gap-4">
+                  <div className="mt-4 flex items-start justify-between gap-3">
                     <div>
-                      <div className="flex flex-wrap items-center gap-2.5 mb-1.5 font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#8E8B84]">
+                      <div className="flex flex-wrap items-center gap-2 mb-1 font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8E8B84]">
                         <span>{project.clientOrNetwork}</span>
-                        <span>·</span>
-                        <span>{project.year}</span>
                         {project.recognition && (
                           <>
                             <span>·</span>
@@ -145,14 +194,14 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                           </>
                         )}
                       </div>
-                      <h3 className="font-serif-display text-2xl sm:text-3xl font-light text-[#F2EFE9] transition-colors duration-300 group-hover:text-[#D4A56A]">
+                      <h3 className="font-serif-display text-2xl font-light text-[#F2EFE9] transition-colors duration-300 group-hover:text-[#D4A56A]">
                         {project.title}
                       </h3>
-                      <p className="mt-1.5 text-sm text-[#8E8B84] max-w-2xl line-clamp-2">
+                      <p className="mt-1 text-xs leading-relaxed text-[#8E8B84] line-clamp-2">
                         {project.logline}
                       </p>
                     </div>
-                    <ArrowUpRight className="h-5 w-5 shrink-0 text-[#8E8B84] transition-all duration-300 group-hover:text-[#D4A56A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-1" />
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-[#8E8B84] transition-all duration-300 group-hover:text-[#D4A56A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 mt-1" />
                   </div>
                 </article>
               );
@@ -168,12 +217,12 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                   onMouseEnter={() => setHoveredProject(project)}
                   onFocus={() => setHoveredProject(project)}
                   onClick={() => onSelectProject(project)}
-                  className="group w-full flex items-center justify-between gap-4 border-b border-[#F2EFE9]/10 py-5 text-left transition-colors hover:bg-[#F2EFE9]/[0.02] px-3 cursor-pointer"
+                  className="group w-full flex items-center justify-between gap-4 border-b border-[#F2EFE9]/10 py-4 text-left transition-colors hover:bg-[#F2EFE9]/[0.02] px-3 cursor-pointer"
                 >
-                  <div className="flex items-baseline gap-5">
+                  <div className="flex items-baseline gap-4">
                     <span className="font-mono-tech text-xs text-[#D4A56A]">{project.index}</span>
                     <div>
-                      <div className="font-serif-display text-2xl sm:text-3xl font-light text-[#F2EFE9] group-hover:text-[#D4A56A] transition-colors">
+                      <div className="font-serif-display text-xl sm:text-2xl font-light text-[#F2EFE9] group-hover:text-[#D4A56A] transition-colors">
                         {project.title}
                       </div>
                       <div className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-[#8E8B84] mt-0.5">
@@ -185,9 +234,6 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                     <span className="hidden sm:inline font-mono-tech text-[11px] text-[#8E8B84]">
                       {project.aspectRatio}
                     </span>
-                    <span className="font-mono-tech text-[11px] text-[#F2EFE9]/70">
-                      {project.year}
-                    </span>
                     <ArrowUpRight className="h-4 w-4 text-[#8E8B84] group-hover:text-[#D4A56A]" />
                   </div>
                 </button>
@@ -196,18 +242,26 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
 
             {/* Sticky Preview Frame */}
             <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <div className="border border-[#F2EFE9]/12 bg-[#0E0E12] overflow-hidden">
-                <div className="aspect-[16/9] w-full overflow-hidden bg-black">
+              <div
+                onClick={() => onSelectProject(hoveredProject)}
+                className="border border-[#F2EFE9]/12 bg-[#0E0E12] overflow-hidden cursor-pointer group"
+              >
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
                   <img
                     src={hoveredProject.image}
                     alt={hoveredProject.title}
-                    className="h-full w-full object-cover transition-all duration-500"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#F2EFE9]/50 bg-[#09090B]/70 text-[#D4A56A]">
+                      <Play className="h-5 w-5 fill-current ml-0.5" />
+                    </span>
+                  </div>
                 </div>
                 <div className="p-6 space-y-3">
                   <div className="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#D4A56A]">
                     <span>{hoveredProject.format}</span>
-                    <span>{hoveredProject.duration}</span>
+                    <span>{hoveredProject.aspectRatio}</span>
                   </div>
                   <h4 className="font-serif-display text-2xl text-[#F2EFE9]">
                     {hoveredProject.title}

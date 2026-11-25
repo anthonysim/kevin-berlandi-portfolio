@@ -16,32 +16,33 @@ export interface Project {
   logline: string;
   directorNote: string;
   visualLanguage: string[];
-  /** Drop in a Vimeo or YouTube embed URL to play live video inside the Screening Room */
-  videoEmbedUrl?: string;
+  videoEmbedUrl: string;
   featured?: boolean;
 }
 
 export const DIRECTOR_REEL: Project = {
-  id: 'directors-reel',
+  id: 'general-reel',
   index: '00',
-  title: 'Director’s Reel',
-  subtitle: 'Selected Moments — Film, Television & Commercials',
+  title: 'General Reel',
+  subtitle: 'Director’s Montage — Film, Television & Commercials',
   discipline: 'Film',
-  clientOrNetwork: 'Berlandi Productions',
-  year: '2026',
-  duration: '02:18',
+  clientOrNetwork: 'Kevin Berlandi · Berlandi Productions',
+  year: '2025',
+  duration: 'General Reel',
   aspectRatio: '2.39:1',
-  format: 'Anamorphic Digital & 35mm',
+  format: 'Anamorphic Digital & Large Format',
   image: '/images/hero-cinema.jpg',
   recognition: 'DGA · Television Academy',
   logline:
-    'A visual meditation on scale, stillness, and kinetic momentum across episodic drama, narrative cinema, and global commercial storytelling.',
+    'A curated director’s montage spanning primetime episodic television, Cannes-premiered narrative cinema, and global commercial storytelling.',
   directorNote:
-    'Whether staging a towering ocean rescue or holding an unbroken close-up in quiet twilight, every frame is built around emotional truth. Light does the speaking before a single line of dialogue lands.',
+    'Whether staging an open-water rescue or holding an unbroken close-up in quiet shadow, every frame is built around emotional truth. Light and rhythm do the speaking before a single line of dialogue lands.',
   visualLanguage: ['Anamorphic Framing', 'Chiaroscuro Lighting', 'Kinetic Blocking', 'Intimate Performance'],
+  videoEmbedUrl: 'https://player.vimeo.com/video/1080935755?h=1f6704da83',
 };
 
 export const PROJECTS: Project[] = [
+  // NARRATIVE / SHORT FILMS
   {
     id: 'hana-sasakis-tail',
     index: '01',
@@ -50,115 +51,390 @@ export const PROJECTS: Project[] = [
     discipline: 'Film',
     clientOrNetwork: 'Adapted from Three Scenarios',
     year: '2016',
-    duration: '14:20',
+    duration: 'Short Film',
     aspectRatio: '2.39:1',
-    format: 'ARRI Alexa · Vintage Anamorphic',
-    image: '/images/film-hana.jpg',
+    format: 'Cinema Anamorphic',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e99400ccc755adde55188/1772001600018/?format=1500w',
     recognition: 'Official Premiere — Festival de Cannes',
     logline:
-      'A poetic, quietly surreal portrait of identity, inheritance, and unseen longing, adapted from the acclaimed literary collection Three Scenarios.',
+      'A poetic, quietly surreal portrait of identity, inheritance, and unseen longing, adapted from the literary collection Three Scenarios.',
     directorNote:
-      'We approached the camera like a patient observer—favoring architectural frames, warm afternoon shafts of natural light, and lingering silences that let the audience inhabit Hana’s inner world.',
-    visualLanguage: ['Natural Golden-Hour Key', 'Measured Dolly Movement', 'Poetic Restraint'],
+      'We approached the camera like a patient observer—favoring architectural frames, warm natural light, and lingering silences that let the audience inhabit Hana’s inner world.',
+    visualLanguage: ['Poetic Restraint', 'Natural Key Lighting', 'Measured Camera Movement'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/134337974?h=9cfaaeeba5',
     featured: true,
   },
   {
-    id: 'rescue-hi-surf',
+    id: 'rescue-hi-surf-kickout',
     index: '02',
-    title: 'Rescue: HI-Surf',
-    subtitle: 'Episodic Television Drama',
+    title: 'Rescue: HI-Surf — “Kick Out”',
+    subtitle: 'Episodic Television Drama · Ep. 104',
     discipline: 'Television',
     clientOrNetwork: 'FOX · Warner Bros. Television',
     year: '2024',
-    duration: '43:00',
+    duration: 'Episodic',
     aspectRatio: '2.00:1',
-    format: 'Large Format · Water Housing & Aerial',
-    image: '/images/tv-rescue.jpg',
-    recognition: 'Network Primetime',
+    format: 'Large Format · Water Housing',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f58400ccc755adde631e9/1772050496340/?format=1500w',
+    recognition: 'FOX Primetime',
     logline:
-      'High-stakes open-water heroism set along Oahu’s formidable North Shore, balancing visceral oceanic scale with deeply grounded human vulnerability.',
+      'High-stakes open-water heroism along Oahu’s North Shore, uniting visceral oceanic scale with grounded human vulnerability.',
     directorNote:
-      'Directing on the water means collaborating with nature’s unpredictability. We paired immersive, wave-level lens placement with quiet, character-first beats on shore so the spectacle always serves the stakes.',
-    visualLanguage: ['Water-Level Immersion', 'Backlit Atmospheric Spray', 'High-Tension Pacing'],
+      'Directing on the water means collaborating with nature’s unpredictability. We paired immersive, wave-level lens placement with quiet character beats on shore so the spectacle always serves the stakes.',
+    visualLanguage: ['Water-Level Immersion', 'Kinetic Scale', 'High-Tension Pacing'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/1030123998?h=0fad908937',
     featured: true,
   },
   {
-    id: 'found-blacklist',
+    id: 'found-missing-while-perfect',
     index: '03',
-    title: 'Found / The Blacklist',
-    subtitle: 'Prestige Crime & Psychological Drama',
+    title: 'Found — “Missing While Perfect”',
+    subtitle: 'Episodic Television Drama',
     discipline: 'Television',
     clientOrNetwork: 'NBC · Universal Television',
-    year: '2023–2024',
-    duration: '42:00',
+    year: '2024',
+    duration: 'Episodic',
     aspectRatio: '1.85:1',
-    format: '35mm Equivalent · Spherical Prime',
-    image: '/images/tv-thriller.jpg',
-    recognition: 'NBC Primetime Series',
+    format: 'Large Format Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e97961c057764f6cd177a/1772001174136/?format=1500w',
+    recognition: 'NBC Primetime',
     logline:
-      'Taut, character-driven investigations where shadow, architecture, and micro-expressions carry as much narrative weight as the dialogue.',
+      'An emotionally charged procedural drama exploring obsession, trauma, and the razor-thin line between savior and captor.',
     directorNote:
-      'In procedural thrillers, tension lives in the pauses. I love using negative space, reflective glass, and deliberate lens compression to isolate characters inside their moral dilemmas.',
-    visualLanguage: ['Neo-Noir Chiaroscuro', 'Controlled Negative Space', 'Performance-Driven Blocking'],
+      'Tension lives in the pauses. We used controlled negative space, reflective surfaces, and deliberate lens compression to isolate characters inside their psychological dilemmas.',
+    visualLanguage: ['Chiaroscuro Contrast', 'Performance-Driven Blocking', 'Emotional Compression'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/1030135107?h=9d38f80ccd',
     featured: true,
   },
   {
-    id: 'audi-precision',
+    id: 'blacklist-the-postman',
     index: '04',
-    title: 'Audi — Twilight Motion',
-    subtitle: 'Global Automotive Campaign',
+    title: 'The Blacklist — “The Postman”',
+    subtitle: 'Episodic Crime Thriller',
+    discipline: 'Television',
+    clientOrNetwork: 'NBC · Sony Pictures Television',
+    year: '2023',
+    duration: 'Episodic',
+    aspectRatio: '1.85:1',
+    format: 'Cinema Spherical',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f586d1c057764f6cdf7bd/1772050541139/?format=1500w',
+    recognition: 'NBC Primetime',
+    logline:
+      'Taut espionage and moral ambiguity in a high-stakes chapter of NBC’s signature crime thriller.',
+    directorNote:
+      'Every scene in The Blacklist is a chess match. We choreographed the camera to glide with the power shifts in the room so the audience feels who holds leverage before a word is spoken.',
+    visualLanguage: ['Neo-Noir Lighting', 'Precision Blocking', 'Suspense Cadence'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/1126334339?h=4d36165d17',
+    featured: true,
+  },
+  {
+    id: 'dirtballs',
+    index: '05',
+    title: 'Dirtballs',
+    subtitle: 'Narrative Short Film',
+    discipline: 'Film',
+    clientOrNetwork: 'Berlandi Productions',
+    year: '2024',
+    duration: 'Short Film',
+    aspectRatio: '2.39:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e999d1c057764f6cd190a/1772001693088/?format=1500w',
+    recognition: 'Narrative Short',
+    logline:
+      'A gritty, character-forward narrative short driven by raw texture, sharp comedic timing, and lived-in authenticity.',
+    directorNote:
+      'We kept the camera nimble and close to the performers—embracing natural texture and spontaneous rhythm so every beat feels discovered in the moment.',
+    visualLanguage: ['Handheld Intimacy', 'Textural Lighting', 'Character Rhythm'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/1053877597',
+  },
+  {
+    id: 'bull-you-killed-your-sister',
+    index: '06',
+    title: 'Bull — “You Killed Your Sister”',
+    subtitle: 'Episodic Legal Drama',
+    discipline: 'Television',
+    clientOrNetwork: 'CBS · Amblin Television',
+    year: '2020',
+    duration: 'Episodic',
+    aspectRatio: '1.85:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e97e00ccc755adde5508a/1772001248088/?format=1500w',
+    recognition: 'CBS Primetime',
+    logline:
+      'High-wire courtroom drama where subtle micro-expressions and shifting allegiances decide the verdict.',
+    directorNote:
+      'In courtroom storytelling, the reaction shot is everything. We staged tight architectural sightlines across the gallery so silence carried the weight of a cross-examination.',
+    visualLanguage: ['Courtroom Sightlines', 'Intimate Close-Ups', 'Measured Tension'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/380530928',
+  },
+
+  // COMMERCIALS
+  {
+    id: 'audi-r8-gt',
+    index: '07',
+    title: 'Audi — R8 GT',
+    subtitle: 'Automotive Commercial',
     discipline: 'Commercials',
     clientOrNetwork: 'Audi',
-    year: '2024',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '2.39:1',
+    format: 'Cinema Tracking',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7f9e44195311c2c3c2c8/1772060574117/?format=1500w',
+    logline:
+      'Sculptural velocity and precision engineering—treating the Audi R8 GT with the brooding visual drama of a feature film.',
+    directorNote:
+      'Great automotive filmmaking is choreography between light, reflection, and sound. We let the car’s silhouette emerge from shadow with zero wasted frames.',
+    visualLanguage: ['Sculptural Reflections', 'Precision Tracking', 'Cinematic Sound'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/41329162',
+  },
+  {
+    id: 'audi-sleepy-hollow',
+    index: '08',
+    title: 'Audi — Sleepy Hollow',
+    subtitle: 'Automotive Narrative Commercial',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Audi',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '2.39:1',
+    format: 'Anamorphic Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7f77b058784bd93fd441/1772060535612/?format=1500w',
+    logline:
+      'Atmospheric nocturnal storytelling blending folklore suspense with razor-sharp modern automotive cinematography.',
+    directorNote:
+      'By leaning into atmospheric fog, backlit trees, and feature-style suspense pacing, the commercial unfolds like a miniature dark fable.',
+    visualLanguage: ['Nocturnal Atmosphere', 'Narrative Suspense', 'Backlit Haze'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/41330072',
+  },
+  {
+    id: 'porsche-cayenne',
+    index: '09',
+    title: 'Porsche — Cayenne',
+    subtitle: 'Luxury Automotive Commercial',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Porsche',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '2.39:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7fc11c057764f6ce342f/1772060609840/?format=1500w',
+    logline:
+      'Refined power and tactile motion crafted with disciplined European minimalism and kinetic camera work.',
+    directorNote:
+      'Every camera move was matched to the torque and poise of the vehicle—clean lines, disciplined color, and understated confidence.',
+    visualLanguage: ['Kinetic Poise', 'Architectural Lines', 'Luxury Restraint'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/41329588',
+  },
+  {
+    id: 'gmc-anthem',
+    index: '10',
+    title: 'GMC — Anthem',
+    subtitle: 'National Broadcast Campaign · :60',
+    discipline: 'Commercials',
+    clientOrNetwork: 'GMC',
+    year: 'Commercial',
     duration: '01:00',
     aspectRatio: '2.39:1',
-    format: 'Phantom Flex4K · Russian Arm',
-    image: '/images/comm-auto.jpg',
-    recognition: 'National Broadcast & Cinema',
-    logline:
-      'Sculptural speed through coastal blue-hour mist—treating automotive design with the restraint and tactile drama of a feature film.',
-    directorNote:
-      'Great commercial directing strips away noise until only feeling remains. We chased the narrow twenty-minute window of coastal blue hour so the car’s geometry emerged from mist and reflected light alone.',
-    visualLanguage: ['Sculptural Reflections', 'Precision Tracking', 'Tactile Sound Design'],
-    featured: true,
-  },
-  {
-    id: 'partner-track',
-    index: '05',
-    title: 'Partner Track',
-    subtitle: 'Episodic Drama Series',
-    discipline: 'Television',
-    clientOrNetwork: 'Netflix',
-    year: '2022',
-    duration: '45:00',
-    aspectRatio: '2.00:1',
-    format: 'VENICE 6K · Anamorphic',
-    image: '/images/hero-cinema.jpg',
-    recognition: 'Netflix Global Original',
-    logline:
-      'Sharp, stylish New York legal drama exploring ambition, identity, and the unspoken power dynamics of high-stakes rooms.',
-    directorNote:
-      'We treated Manhattan’s glass towers as a stage of reflections and barriers—using fluid Steadicam choreography to mirror the relentless tempo of an attorney fighting to claim her seat at the table.',
-    visualLanguage: ['Fluid Steadicam Choreography', 'Architectural Symmetry', 'Warm Tungsten Interiors'],
-  },
-  {
-    id: 'porsche-gmc-reel',
-    index: '06',
-    title: 'Porsche · GMC · Toyota',
-    subtitle: 'Selected Automotive & Brand Anthology',
-    discipline: 'Commercials',
-    clientOrNetwork: 'Porsche / GMC / Toyota / Nissan / Jeep',
-    year: '2021–2025',
-    duration: '01:45',
-    aspectRatio: '2.39:1',
     format: 'Large Format Cinema',
-    image: '/images/director-craft.jpg',
-    recognition: 'Global Brand Campaigns',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f800f44195311c2c3c36a/1772060687610/?format=1500w',
     logline:
-      'A curated anthology of kinetic brand films uniting monumental camera craft with human warmth and split-second editorial rhythm.',
+      'A bold sixty-second anthem uniting monumental American landscapes with human craft and industrial precision.',
     directorNote:
-      'My years as an Assistant Director on large-scale studio features taught me how to command complex logistics effortlessly—freeing the set to focus entirely on artistry, light, and spontaneity.',
-    visualLanguage: ['Kinetic Camera Language', 'Precision Choreography', 'Cinematic Color Science'],
+      'Anthem spots live or die on editorial cadence. We paired sweeping scale with tactile human details—hands, steel, dust, and light—to ground the grandeur.',
+    visualLanguage: ['Anthemic Scale', 'Editorial Cadence', 'Tactile Detail'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/217107451',
+  },
+  {
+    id: 'wait-until-8th-the-gift',
+    index: '11',
+    title: 'The Gift — Wait Until 8th',
+    subtitle: 'Public Service Film · :60',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Wait Until 8th PSA',
+    year: '2025',
+    duration: '01:00',
+    aspectRatio: '1.85:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5c7f44195311c2c38e70/1772051583714/?format=1500w',
+    recognition: 'National PSA Campaign',
+    logline:
+      'An intimate, emotionally resonant sixty-second film examining childhood presence in an always-connected world.',
+    directorNote:
+      'We stripped away commercial artifice to capture honest, unguarded childhood moments—letting warmth and stillness deliver the emotional turn.',
+    visualLanguage: ['Intimate Naturalism', 'Emotional Pacing', 'Human Warmth'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/1073376430',
+  },
+  {
+    id: 'nissan-altima-chase',
+    index: '12',
+    title: 'Nissan — The Altima Chase',
+    subtitle: 'Action Automotive Commercial',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Nissan',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '2.39:1',
+    format: 'Precision Stunt & Tracking',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7e441c057764f6ce31e5/1772060228935/?format=1500w',
+    logline:
+      'High-velocity urban pursuit crafted with blockbuster action choreography and split-second editorial impact.',
+    directorNote:
+      'Drawing directly from years on major studio action sets, we designed every stunt beat and camera angle for visceral clarity and momentum.',
+    visualLanguage: ['Action Choreography', 'Dynamic Tracking', 'Blockbuster Craft'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/129984589',
+  },
+  {
+    id: 'buick-avenir-anthem',
+    index: '13',
+    title: 'Buick — Avenir Anthem',
+    subtitle: 'Brand Anthem Commercial',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Buick',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '2.39:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5c60b058784bd93f9f52/1772051552948/?format=1500w',
+    logline:
+      'Elevated modern luxury framed through architectural light, quiet elegance, and fluid camera movement.',
+    directorNote:
+      'Luxury is felt in stillness and texture. We lit every interior and exterior pass like a fashion editorial in motion.',
+    visualLanguage: ['Editorial Elegance', 'Fluid Motion', 'Warm Highlights'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/262995616',
+  },
+  {
+    id: 'buick-lacrosse-exterior',
+    index: '14',
+    title: 'Buick LaCrosse — Exterior Design',
+    subtitle: 'Design Film · :30',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Buick',
+    year: 'Commercial',
+    duration: '00:30',
+    aspectRatio: '2.39:1',
+    format: 'Studio & Location Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5cc144195311c2c38ef6/1772051649797/?format=1500w',
+    logline:
+      'A crisp thirty-second visual study celebrating sculptural form, contour, and reflected light.',
+    directorNote:
+      'Treating automotive curves as architecture—letting controlled reflections glide across the body lines in one seamless rhythm.',
+    visualLanguage: ['Sculptural Light', 'Geometric Precision', 'Clean Framing'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/221634951',
+  },
+  {
+    id: 'toyota-prius-roadtrip',
+    index: '15',
+    title: 'Toyota Prius — Roadtrip ft. Ximena Sariñana',
+    subtitle: 'Music & Lifestyle Brand Film',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Toyota',
+    year: 'Commercial',
+    duration: 'Brand Film',
+    aspectRatio: '1.85:1',
+    format: 'Natural Light Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5ce40ccc755adde63924/1772051684240/?format=1500w',
+    logline:
+      'Sun-drenched road film following acclaimed singer-songwriter Ximena Sariñana through open landscapes and spontaneous discovery.',
+    directorNote:
+      'We kept the footprint light and intimate so Ximena’s natural charisma and the golden-hour light could lead every scene.',
+    visualLanguage: ['Golden-Hour Naturalism', 'Musical Rhythm', 'Documentary Ease'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/103471806',
+  },
+  {
+    id: 'jeep-wrangler-aluminum-doors',
+    index: '16',
+    title: 'Jeep Wrangler — Aluminum Doors',
+    subtitle: 'Commercial Campaign',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Jeep',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '1.85:1',
+    format: 'Cinema Digital',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f7e86b058784bd93fd2fc/1772060294044/?format=1500w',
+    logline:
+      'Playful, tactile brand storytelling highlighting rugged capability with sharp comedic timing and kinetic visuals.',
+    directorNote:
+      'A product feature becomes memorable when it’s told through character and wit rather than exposition.',
+    visualLanguage: ['Comedic Timing', 'Rugged Texture', 'Crisp Pacing'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/328040035',
+  },
+  {
+    id: 'jeep-wrangler-sway-bar',
+    index: '17',
+    title: 'Jeep Wrangler — Sway Bar',
+    subtitle: 'Commercial Campaign',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Jeep',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '1.85:1',
+    format: 'Off-Road Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699f5ca444195311c2c38eca/1772051620035/?format=1500w',
+    logline:
+      'Kinetic off-road terrain meets crisp visual storytelling, spotlighting engineering poise under extreme angles.',
+    directorNote:
+      'Low-angle lens placement turns rugged terrain into a dramatic stage—making every mechanical movement feel effortless.',
+    visualLanguage: ['Low-Angle Scale', 'Kinetic Terrain', 'Visual Clarity'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/328039693',
+  },
+  {
+    id: 'jeep-wrangler-all-weather',
+    index: '18',
+    title: 'Jeep Wrangler — All-Weather',
+    subtitle: 'Commercial Campaign',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Jeep',
+    year: 'Commercial',
+    duration: 'Spot',
+    aspectRatio: '1.85:1',
+    format: 'Elemental Location Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e98810ccc755adde550ff/1772001409928/?format=1500w',
+    logline:
+      'Elemental adventure captured with vivid atmospheric texture and grounded human energy.',
+    directorNote:
+      'Rain, dust, and light give the frame physical weight—putting the viewer right inside the elements.',
+    visualLanguage: ['Elemental Atmosphere', 'Tactile Cinematography', 'Energetic Cut'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/328039390',
+  },
+  {
+    id: 'nixon-x-krewella',
+    index: '19',
+    title: 'Nixon × Krewella',
+    subtitle: 'Music & Lifestyle Brand Film',
+    discipline: 'Commercials',
+    clientOrNetwork: 'Nixon',
+    year: 'Commercial',
+    duration: 'Brand Film',
+    aspectRatio: '2.39:1',
+    format: 'Anamorphic Night Cinema',
+    image:
+      'https://static1.squarespace.com/static/699e23e362bb315fe27f3c0d/t/699e98be0ccc755adde5512f/1772001470948/?format=1500w',
+    logline:
+      'Electric nightlife energy, kinetic neon-lit portraiture, and rhythmic sound-driven montage for Nixon × Krewella.',
+    directorNote:
+      'Cut to the pulse of the music—pairing high-contrast night lighting with raw, kinetic portraits that blur commercial and music video.',
+    visualLanguage: ['Electric Night Color', 'Sound-Driven Montage', 'Kinetic Portraiture'],
+    videoEmbedUrl: 'https://player.vimeo.com/video/230169487',
   },
 ];
 
@@ -166,7 +442,7 @@ export const TELEVISION_CREDITS = [
   { title: 'Rescue: HI-Surf', network: 'FOX', role: 'Director' },
   { title: 'Found', network: 'NBC', role: 'Director' },
   { title: 'Partner Track', network: 'Netflix', role: 'Director' },
-  { title: "NCIS: Hawaiʻi", network: 'CBS', role: 'Director' },
+  { title: 'NCIS: Hawaiʻi', network: 'CBS', role: 'Director' },
   { title: 'NCIS: Los Angeles', network: 'CBS', role: 'Director' },
   { title: 'The Blacklist', network: 'NBC', role: 'Director' },
   { title: 'Criminal Minds', network: 'CBS / Paramount+', role: 'Director' },
@@ -190,6 +466,7 @@ export const COMMERCIAL_BRANDS = [
   'Buick',
   'Nissan',
   'Toyota',
+  'Nixon',
   'Kia',
   'Burger King',
 ];

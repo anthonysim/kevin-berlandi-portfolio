@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { X, Play, Pause, Maximize2, Grid, Film } from 'lucide-react';
+import { useEffect } from 'react';
+import { X, Film, ExternalLink } from 'lucide-react';
 import type { Project } from '../data/portfolio';
 
 interface ScreeningModalProps {
@@ -7,21 +7,16 @@ interface ScreeningModalProps {
   onClose: () => void;
 }
 
-export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(18);
-  const [showFrameGuides, setShowFrameGuides] = useState(true);
+function buildVimeoEmbedSrc(rawUrl: string): string {
+  const separator = rawUrl.includes('?') ? '&' : '?';
+  return `${rawUrl}${separator}autoplay=1&title=0&byline=0&portrait=0&color=d4a56a&dnt=1`;
+}
 
+export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
   useEffect(() => {
     if (!project) return;
-    setIsPlaying(true);
-    setProgress(12);
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === ' ') {
-        e.preventDefault();
-        setIsPlaying((p) => !p);
-      }
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKey);
@@ -31,15 +26,9 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
     };
   }, [project, onClose]);
 
-  useEffect(() => {
-    if (!project || !isPlaying || project.videoEmbedUrl) return;
-    const timer = setInterval(() => {
-      setProgress((prev) => (prev >= 100 ? 0 : prev + 0.45));
-    }, 100);
-    return () => clearInterval(timer);
-  }, [project, isPlaying]);
-
   if (!project) return null;
+
+  const embedSrc = buildVimeoEmbedSrc(project.videoEmbedUrl);
 
   return (
     <div
@@ -59,19 +48,16 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowFrameGuides(!showFrameGuides)}
-              className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 font-mono-tech text-[10px] uppercase tracking-[0.18em] border transition-colors cursor-pointer ${
-                showFrameGuides
-                  ? 'border-[#D4A56A]/60 text-[#D4A56A] bg-[#D4A56A]/10'
-                  : 'border-[#F2EFE9]/15 text-[#8E8B84] hover:text-[#F2EFE9]'
-              }`}
-              title="Toggle Director's Frame Guides"
+          <div className="flex items-center gap-4">
+            <a
+              href={project.videoEmbedUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 font-mono-tech text-[10px] uppercase tracking-[0.18em] text-[#8E8B84] hover:text-[#D4A56A] transition-colors"
             >
-              <Grid className="h-3 w-3" />
-              <span>Frame Guides</span>
-            </button>
+              <span>Open Player</span>
+              <ExternalLink className="h-3 w-3" />
+            </a>
 
             <button
               onClick={onClose}
@@ -83,103 +69,16 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
           </div>
         </div>
 
-        {/* Cinema Viewport */}
-        <div className="relative aspect-[16/9] w-full bg-black overflow-hidden select-none">
-          {project.videoEmbedUrl ? (
-            <iframe
-              src={project.videoEmbedUrl}
-              title={project.title}
-              className="h-full w-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            <>
-              <img
-                src={project.image}
-                alt={project.title}
-                className={`h-full w-full object-cover transition-transform duration-[8000ms] ease-linear ${
-                  isPlaying ? 'scale-105' : 'scale-100'
-                }`}
-              />
-
-              {/* Subtle Letterbox Cinema Matte */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[8%] bg-black/90" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[8%] bg-black/90" />
-
-              {/* Optional Director's Viewfinder Frame Guides */}
-              {showFrameGuides && (
-                <div className="pointer-events-none absolute inset-[9%] border border-[#F2EFE9]/18">
-                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-[#F2EFE9]/10" />
-                  <div className="absolute left-2/3 top-0 bottom-0 w-px bg-[#F2EFE9]/10" />
-                  <div className="absolute top-1/3 left-0 right-0 h-px bg-[#F2EFE9]/10" />
-                  <div className="absolute top-2/3 left-0 right-0 h-px bg-[#F2EFE9]/10" />
-                  {/* Center Crosshair */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-4 w-4">
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#D4A56A]/60" />
-                    <div className="absolute top-1/2 left-0 right-0 h-px bg-[#D4A56A]/60" />
-                  </div>
-                  <span className="absolute top-2 left-2.5 font-mono-tech text-[9px] tracking-[0.2em] text-[#F2EFE9]/55 uppercase">
-                    {project.aspectRatio} · 24.000 FPS
-                  </span>
-                  <span className="absolute bottom-2 right-2.5 font-mono-tech text-[9px] tracking-[0.2em] text-[#D4A56A]/75 uppercase">
-                    REC · {project.format}
-                  </span>
-                </div>
-              )}
-
-              {/* Subtle Vignette */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
-
-              {/* Center Play/Pause Overlay when paused */}
-              {!isPlaying && (
-                <button
-                  onClick={() => setIsPlaying(true)}
-                  className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity cursor-pointer"
-                >
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full border border-[#F2EFE9]/40 bg-[#09090B]/70 backdrop-blur-md text-[#F2EFE9]">
-                    <Play className="h-6 w-6 fill-current ml-0.5" />
-                  </span>
-                </button>
-              )}
-
-              {/* Bottom Playback Controls */}
-              <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col gap-2 px-5 pb-4 pt-8 bg-gradient-to-t from-black/95 to-transparent">
-                {/* Scrub Bar */}
-                <div
-                  className="group relative h-1 w-full bg-[#F2EFE9]/20 cursor-pointer"
-                  onClick={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    const pct = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-                    setProgress(pct);
-                  }}
-                >
-                  <div
-                    className="h-full bg-[#D4A56A] transition-all duration-100"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-[11px] font-mono-tech text-[#F2EFE9]/80">
-                  <div className="flex items-center gap-4">
-                    <button
-                      onClick={() => setIsPlaying((p) => !p)}
-                      className="flex items-center gap-2 uppercase tracking-[0.18em] hover:text-[#D4A56A] cursor-pointer"
-                    >
-                      {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 fill-current" />}
-                      <span>{isPlaying ? 'Playing Preview' : 'Paused'}</span>
-                    </button>
-                    <span className="text-[#8E8B84] hidden sm:inline">
-                      {project.duration} · Ready for Vimeo / Private Screener Link
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#8E8B84]">
-                    <Maximize2 className="h-3.5 w-3.5" />
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+        {/* Live Cinema Video Viewport */}
+        <div className="relative aspect-[16/9] w-full bg-black overflow-hidden">
+          <iframe
+            key={project.id}
+            src={embedSrc}
+            title={project.title}
+            className="h-full w-full border-0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            allowFullScreen
+          />
         </div>
 
         {/* Director's Notes & Technical Specs */}
@@ -207,9 +106,7 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
               {project.title}
             </h3>
 
-            <p className="text-sm leading-relaxed text-[#F2EFE9]/75">
-              {project.logline}
-            </p>
+            <p className="text-sm leading-relaxed text-[#F2EFE9]/75">{project.logline}</p>
 
             <div className="pt-2 border-t border-[#F2EFE9]/10">
               <div className="flex items-center gap-2 mb-2 text-[#D4A56A]">
@@ -243,11 +140,15 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
 
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#F2EFE9]/10 font-mono-tech text-[11px]">
               <div>
-                <div className="text-[#8E8B84] uppercase tracking-[0.18em] text-[9px] mb-1">Format</div>
+                <div className="text-[#8E8B84] uppercase tracking-[0.18em] text-[9px] mb-1">
+                  Format
+                </div>
                 <div className="text-[#F2EFE9]/90">{project.format}</div>
               </div>
               <div>
-                <div className="text-[#8E8B84] uppercase tracking-[0.18em] text-[9px] mb-1">Aspect Ratio</div>
+                <div className="text-[#8E8B84] uppercase tracking-[0.18em] text-[9px] mb-1">
+                  Aspect Ratio
+                </div>
                 <div className="text-[#F2EFE9]/90">{project.aspectRatio}</div>
               </div>
             </div>
