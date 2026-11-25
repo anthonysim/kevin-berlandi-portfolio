@@ -16,7 +16,7 @@ export function App() {
       {/* Subtle 35mm film grain overlay */}
       <div className="film-grain" aria-hidden="true" />
 
-      <Navbar onOpenReel={() => setActiveProject(DIRECTOR_REEL)} />
+      <Navbar />
 
       {/* HERO — THE SCREENING ROOM */}
       <section className="relative flex min-h-screen w-full items-end overflow-hidden pt-28 pb-16 md:pb-24">

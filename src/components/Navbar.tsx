@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Play, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
-interface NavbarProps {
-  onOpenReel: () => void;
-}
-
-export function Navbar({ onOpenReel }: NavbarProps) {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [frameCount, setFrameCount] = useState(14);
@@ -66,24 +62,14 @@ export function Navbar({ onOpenReel }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Action + Mobile Menu */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={onOpenReel}
-            className="group hidden sm:inline-flex items-center gap-2.5 border border-[#F2EFE9]/25 bg-[#F2EFE9]/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-[#F2EFE9] transition-all duration-300 hover:border-[#D4A56A] hover:bg-[#D4A56A]/10 hover:text-[#D4A56A] cursor-pointer"
-          >
-            <Play className="h-3 w-3 fill-current transition-transform duration-300 group-hover:scale-110" />
-            <span>Screening Reel</span>
-          </button>
-
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle Menu"
-            className="lg:hidden p-2 text-[#F2EFE9]/80 hover:text-[#F2EFE9] cursor-pointer"
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+        {/* Mobile Menu Trigger */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle Menu"
+          className="lg:hidden p-2 text-[#F2EFE9]/80 hover:text-[#F2EFE9] cursor-pointer"
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
       {/* Mobile Drawer */}
@@ -100,16 +86,6 @@ export function Navbar({ onOpenReel }: NavbarProps) {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => {
-                setMobileOpen(false);
-                onOpenReel();
-              }}
-              className="mt-2 inline-flex w-fit items-center gap-2.5 border border-[#D4A56A]/60 px-5 py-2.5 text-xs uppercase tracking-[0.22em] text-[#D4A56A]"
-            >
-              <Play className="h-3.5 w-3.5 fill-current" />
-              <span>Watch Director’s Reel</span>
-            </button>
           </div>
         </div>
       )}
