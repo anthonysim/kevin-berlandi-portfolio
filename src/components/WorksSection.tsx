@@ -11,10 +11,17 @@ const DISCIPLINES: Discipline[] = ['All', 'Film', 'Television', 'Commercials'];
 export function WorksSection({ onSelectProject }: WorksSectionProps) {
   const [filter, setFilter] = useState<Discipline>('All');
   const [viewMode, setViewMode] = useState<'gallery' | 'index'>('gallery');
-  const [hoveredProject, setHoveredProject] = useState<Project>(PROJECTS[0]);
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
 
   const filtered =
     filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.discipline === filter);
+
+  const previewProject = hoveredProject ?? filtered[0] ?? PROJECTS[0];
+
+  const handleFilterChange = (tab: Discipline) => {
+    setFilter(tab);
+    setHoveredProject(null);
+  };
 
   const getCount = (tab: Discipline) =>
     tab === 'All' ? PROJECTS.length : PROJECTS.filter((p) => p.discipline === tab).length;
@@ -39,7 +46,7 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
               {DISCIPLINES.map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setFilter(tab)}
+                  onClick={() => handleFilterChange(tab)}
                   className={`shrink-0 whitespace-nowrap px-3.5 py-2 font-mono-tech text-[11px] uppercase tracking-[0.16em] transition-all duration-300 cursor-pointer ${
                     filter === tab
                       ? 'bg-[#F2EFE9] text-[#09090B]'
@@ -191,13 +198,13 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
             {/* Sticky Preview Frame (Desktop) */}
             <div className="hidden lg:block lg:col-span-5 lg:sticky lg:top-28">
               <div
-                onClick={() => onSelectProject(hoveredProject)}
+                onClick={() => onSelectProject(previewProject)}
                 className="border border-[#F2EFE9]/12 bg-[#0E0E12] overflow-hidden cursor-pointer group"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
                   <img
-                    src={hoveredProject.image}
-                    alt={hoveredProject.title}
+                    src={previewProject.image}
+                    alt={previewProject.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -208,14 +215,14 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                 </div>
                 <div className="p-6 space-y-3">
                   <div className="flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.22em] text-[#D4A56A]">
-                    <span>{hoveredProject.format}</span>
-                    <span>{hoveredProject.aspectRatio}</span>
+                    <span>{previewProject.format}</span>
+                    <span>{previewProject.aspectRatio}</span>
                   </div>
                   <h4 className="font-serif-display text-2xl text-[#F2EFE9]">
-                    {hoveredProject.title}
+                    {previewProject.title}
                   </h4>
                   <p className="font-serif-display italic text-base text-[#F2EFE9]/80">
-                    “{hoveredProject.directorNote}”
+                    “{previewProject.directorNote}”
                   </p>
                 </div>
               </div>
