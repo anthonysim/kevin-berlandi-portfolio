@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { X, Film, ExternalLink } from 'lucide-react';
 import type { Project } from '../data/portfolio';
 
@@ -13,6 +13,12 @@ function buildVimeoEmbedSrc(rawUrl: string): string {
 }
 
 export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [project?.id]);
+
   useEffect(() => {
     if (!project) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -71,11 +77,30 @@ export function ScreeningModal({ project, onClose }: ScreeningModalProps) {
 
         {/* Live Cinema Video Viewport */}
         <div className="relative aspect-[16/9] w-full bg-black overflow-hidden">
+          {!isLoaded && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="h-full w-full object-cover opacity-45 scale-[1.01]"
+              />
+              <div className="absolute inset-0 bg-[#050507]/55" />
+              <div className="absolute flex flex-col items-center gap-3">
+                <span className="h-9 w-9 rounded-full border-2 border-[#D4A56A]/25 border-t-[#D4A56A] animate-spin" />
+                <span className="font-mono-tech text-[10px] uppercase tracking-[0.24em] text-[#F2EFE9]/80">
+                  Loading Screening
+                </span>
+              </div>
+            </div>
+          )}
           <iframe
             key={project.id}
             src={embedSrc}
             title={project.title}
-            className="h-full w-full border-0"
+            onLoad={() => setIsLoaded(true)}
+            className={`relative z-20 h-full w-full border-0 transition-opacity duration-300 ${
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
             allowFullScreen
           />
