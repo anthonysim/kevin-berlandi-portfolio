@@ -111,12 +111,9 @@ export function WorksSection({ onSelectProject }: WorksSectionProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/85 via-[#09090B]/15 to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-60" />
 
                     {/* Top Technical Metadata */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between font-mono-tech text-[10px] uppercase tracking-[0.2em]">
+                    <div className="absolute top-3.5 left-3.5 flex items-center font-mono-tech text-[10px] uppercase tracking-[0.2em]">
                       <span className="bg-[#09090B]/70 backdrop-blur-md px-2.5 py-1 text-[#F2EFE9]/90 border border-[#F2EFE9]/12">
                         {project.index} · {project.discipline}
-                      </span>
-                      <span className="bg-[#09090B]/70 backdrop-blur-md px-2 py-1 text-[#D4A56A] border border-[#D4A56A]/25">
-                        {project.aspectRatio}
                       </span>
                     </div>
 
